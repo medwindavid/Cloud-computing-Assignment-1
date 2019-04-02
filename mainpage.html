@@ -1,0 +1,382 @@
+<html>
+<head>
+<title>Welcome to  address book</title>
+<meta charset="utf-8"/>
+
+    <style>
+        body{
+            background-color: azure;
+        }
+        .header {
+            background-color: darkslategrey;
+            padding: 20px;
+            text-align: center;
+         }
+        h1{
+            font: full-width;
+            color: lightcoral;
+            text-align: justify;
+            text-transform: uppercase;
+            text-shadow: 1px 1px khaki;
+            font-style: inherit;
+            font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+            display: block;
+
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+        }
+        ul {
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+             overflow: hidden;
+             background-color: #333;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+        li a {
+             display: block;
+             color: white;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+        }
+        li:last-child {
+             border-right: none;
+        }
+
+        li a:hover:not(.active) {
+             background-color: #111;
+        }
+
+        .active {
+             background-color: #4CAF50;
+        }
+
+         input[type=text] {
+              width: 35%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              resize: vertical;
+         }
+         input[type=date] {
+              width: 35%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              resize: vertical;
+         }
+
+        label {
+          padding: 12px 12px 12px 0;
+          display: inline-block;
+        }
+
+        .container {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+
+        .col-25 {
+          float: left;
+          width: 25%;
+          margin-top: 6px;
+        }
+
+        .col-75 {
+          float: left;
+          width: 75%;
+          margin-top: 6px;
+        }
+         .container2 {
+          display: inline;
+          position: relative;
+          padding-left: 35px;
+          margin-bottom: 6px;
+          cursor: pointer;
+          font-size: 16px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+
+        .container2 input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+
+        .checkmark {
+          position: absolute;
+          top: 10%;
+          left: 150%;
+          height: 25px;
+          width: 25px;
+          background-color: #4CAF50;
+        }
+
+
+        .container2:hover input ~ .checkmark {
+          background-color: #ccc;
+        }
+
+
+        .container2 input:checked ~ .checkmark {
+          background-color: #2196F3;
+        }
+
+
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+
+        .container2 input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+
+        .container2 .checkmark:after {
+          left: 9px;
+          top: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+
+
+        input[type=submit] {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer;
+
+        }
+
+
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+        }
+
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {background-color:#f5f5f5;}
+
+
+
+        .link:link {
+          color: red;
+            text-decoration: none;
+        }
+
+
+        .link:visited {
+          color: green;
+        }
+
+
+        .link:hover {
+          color: hotpink;
+        }
+
+        /
+        .link:active {
+          color: blue;
+        }
+
+
+    </style>
+
+
+</head>
+<body >
+<!--header-->
+<div class="header">
+    <h1> Vulcan </h1> </div>
+
+<!--navigation bar-->
+<div class="topnav">
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+
+  <li><a href="/search">Search</a> </li>
+    <li style="float:right"><a href="{{ logout_url }}">LogOut</a> </li>
+</ul>
+</div>
+
+<!--main content-->
+<br/><br/>
+<h3>Add Gpu</h3>
+   <!--add gpu form-->
+<div class="container">
+<form action="/" method="post" align="center">
+
+
+    <div>
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+
+<!--error message-->
+    {% if error %}
+    <p><strong>
+        {{error}}
+    </p></strong>
+{% endif %}
+
+        </div></div>
+
+<br/>
+
+
+<div class="row">
+    <div class="col-25">
+
+
+<label for="name">    Name :</label></div> <div class="col-75"><input type="text" name="name"/></div></div><br/>
+
+    <div class="row">
+    <div class="col-25">
+        <label for="Manufacturer">  Manufacturer :</label></div><div class="col-75"> <input type="text" name="manufacturer"/>
+    </div></div><br/>
+
+    <div class="row">
+    <div class="col-25">
+        <label for=" DateIssued">Date Issued:</label> </div> <div class="col-75"><input type="date" name="dateIssued"/></div></div>
+    <br/>
+
+    <div class="row1"><label  for="Geometry Shader"><label class="container2">
+        Geometry Shader : <input type="checkbox" name="geometryShader" checked="checked"/><span class="checkmark"></span></label></label></div><br/>
+
+    <div class="row1"><label  for="Tesselation Shader"><label class="container2">
+        Tesselation Shader : <input type="checkbox" name="tesselationShader"/><span class="checkmark"></span></label></label></div><br/>
+
+    <div class="row1"><label  for="Shader Int16"><label class="container2">
+        Shader Int16 : <input type="checkbox" name="shaderInt16"/><span class="checkmark"></span></label></label></div><br/>
+
+    <div class="row1"><label  for="Sparse Binding"><label class="container2">
+        Sparse Binding : <input type="checkbox" name="sparseBinding"/><span class="checkmark"></span></label></label></div><br/>
+
+    <div class="row1"><label  for="Texture Compression ETC2"><label class="container2">
+        Texture Compression ETC2 : <input type="checkbox" name="textureCompressionETC2"/><span class="checkmark"></span></label></label></div><br/>
+
+     <div class="row1"><label  for="Vertex Pipeline Stores And Atomics"><label class="container2">
+         Vertex Pipeline Stores And Atomics : <input type="checkbox" name="vertexPipelineStoresAndAtomics"/><span class="checkmark"></span></label></label></div><br/>
+
+    <div class=""row>
+        <input type="submit" name="button" value="Add GPU"/></div>
+
+</form>
+
+</div>
+
+
+
+<!--End of form-->
+<div class="container">
+    <table ><tr><th> List of availble Gpu Click to get details</th></tr>
+
+
+    {% for mygpu in details %}
+<br/>
+
+<tr><td>    <a class="link" href="/detail?name={{mygpu.name}}" >{{mygpu.name}}</a>
+
+</td></tr>
+    {% endfor %}
+
+
+</table>
+</div>
+<br/>
+<br/>
+
+
+</form>
+
+</div>
+<!--search-->
+<table >
+
+    <form action="/search" method="post">
+    <th>
+        <input type="checkbox" name="geometryShader"/>
+        Geometry Shader
+    </th>
+    <th>
+    <input type="checkbox" name="tesselationShader"/>
+        Tesselation Shader
+     </th>
+       <th> <input type="checkbox" name="shaderInt16"/>
+           ShaderInt16
+    </th>
+          <th> <input type="checkbox" name="sparseBinding"/>
+              SparseBinding
+    </th>
+             <th> <input type="checkbox" name="textureCompressionETC2"/>
+                 Texture Compression ETC2
+    </th>
+                 <th><input type="checkbox" name="vertexPipelineStoresAndAtomics"/>
+                     Vertex Pipeline Stores And Atomics
+    </th>
+        <th>
+        <input type="submit" name="button" value="Search"/>
+        </th>
+        </form>
+
+
+</table>
+
+<br/>
+
+
+</body>
+</html>

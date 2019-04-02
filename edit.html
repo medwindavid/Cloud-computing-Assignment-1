@@ -1,0 +1,114 @@
+<html>
+<head>
+<title> Edit </title>
+<meta charset="utf-8"/>
+     <style>
+ body{
+            background-color: azure;
+        }
+        h1{
+            color: brown;
+        }
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: whitesmoke;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+        table {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+th, td, tr {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+
+<h1>Edit Gpu Details</h1><br/>
+<form  action="/edit" method="post">
+
+
+      <p>Name :  <input type="text" name="name" value="{{mygpu.name}}" readonly/>
+            <br/></p>
+      <p>Manufacturer:  <input type="text" name="manufacturer" value="{{ mygpu.manufacturer }}"/>
+            <br/></p>
+      <p>Date : <input type="date" name="dateIssued" value="{{ mygpu.dateIssued }}"/>
+            <br/></p>
+
+            {% if mygpu.geometryShader %}
+            Geometry Shader: <input type="checkbox" name="geometryShader" value="{{mygpu.geometryShader}}" checked />
+            {% else %}
+            Geometry Shader : <input type="checkbox" name="geometryShader" value="{{mygpu.geometryShader}}"/>
+            {% endif %}<br/>
+
+            {% if mygpu.tesselationShader %}
+            Tesselation Shader : <input type="checkbox" name="tesselationShader" value="{{mygpu.tesselationShader}}" checked />
+            {% else %}
+            Tesselation Shader : <input type="checkbox" name="tesselationShader" value="{{mygpu.tesselationShader}}"/>
+            {% endif %}<br/>
+
+            {% if mygpu.shaderInt16 %}
+            shader Int16 : <input type="checkbox" name="shaderInt16" value="{{mygpu.shaderInt16}}" checked />
+            {% else %}
+            shader Int16 : <input type="checkbox" name="shaderInt16" value="{{mygpu.shaderInt16}}"/>
+            {% endif %}<br/>
+
+            {% if mygpu.sparseBinding %}
+            sparse Binding : <input type="checkbox" name="sparseBinding" value="{{mygpu.sparseBinding}}" checked />
+            {% else %}
+            sparse Binding : <input type="checkbox" name="sparseBinding" value="{{mygpu.sparseBinding}}"/>
+            {% endif %}<br/>
+
+            {% if mygpu.textureCompressionETC2  %}
+            Texture Compression ETC2 : <input type="checkbox" name="textureCompressionETC2" value="{{mygpu.textureCompressionETC2}}" checked />
+            {% else %}
+            Texture Compression ETC2 : <input type="checkbox" name="textureCompressionETC2" value="{{mygpu.textureCompressionETC2}}"/>
+            {% endif %}<br/>
+
+            {% if mygpu.vertexPipelineStoresAndAtomics %}
+            Vertex Pipe Line Stores And Atomics : <input type="checkbox" name="vertexPipelineStoresAndAtomics" value="{{mygpu.vertexPipelineStoresAndAtomics}}" checked />
+            {% else %}
+            Vertex Pipe Line Stores And Atomics : <input type="checkbox" name="vertexPipelineStoresAndAtomics" value="{{mygpu.vertexPipelineStoresAndAtomics}}"/>
+            {% endif %}<br/>
+
+
+      <input type="submit" name="button" value="update"/>
+</form>
+<form  action="/edit" method="post">
+
+      <input type="submit" name="button" value="Cancel"/>
+</form>
+<a href="{{ logout_url }}"><input type="button" class="button" value="Logout"></a>
+</body>
+</html>

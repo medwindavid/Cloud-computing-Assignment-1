@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+
+     <style>
+        body{
+            background-color: azure;
+        }
+        header {
+            background-color: darkslategrey;
+            padding: 20px;
+            text-align: center;
+         }
+
+             input[type=submit] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+        </style>
+
+</head>
+<body>
+<table >
+    <thead>
+    <th>
+        Gpu name
+    </th>
+    <th>
+        Manufacturer
+    </th>
+    <th>
+        Date
+    </th>
+    <form action="/search" method="post">
+    <td>
+        <input type="checkbox" name="geometryShader"/>
+        Geometry Shader
+    </td>
+    <td>
+    <input type="checkbox" name="tesselationShader"/>
+        Tesselation Shader
+     </td>
+       <td> <input type="checkbox" name="shaderInt16"/>
+           ShaderInt16
+    </td>
+          <td> <input type="checkbox" name="sparseBinding"/>
+              SparseBinding
+    </td>
+             <td> <input type="checkbox" name="textureCompressionETC2"/>
+                 Texture Compression ETC2
+    </td>
+                 <td><input type="checkbox" name="vertexPipelineStoresAndAtomics"/>
+                     Vertex Pipeline Stores And Atomics
+    </td>
+        <td>
+        <input type="submit" name="button" value="Search"/>
+        </td>
+        </form>
+    </thead>
+    <tbody>
+    {% for mygpu in details %}
+
+    <tr>
+        <td> <a href="/detail?name={{ mygpu.name }}"> {{ mygpu.name }} </a> </td>
+    </td>
+<td>
+    {{ mygpu.manufacturer}}
+</td>
+<td>
+    {{mygpu.dateIssued}}
+</td>
+        <td>
+            {{mygpu.geometryShader}}
+        </td>
+    <td>
+        {{mygpu.tesselationShader}}
+    </td>
+        <td>
+            {{mygpu.shaderInt16}}
+        </td>
+    <td>
+        {{mygpu.sparseBinding}}
+    </td>
+        <td>
+            {{mygpu.textureCompressionETC2}}
+        </td>
+        <td>
+            {{mygpu.vertexPipelineStoresAndAtomics}}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

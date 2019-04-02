@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPU details</title>
+    <style>
+
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: whitesmoke;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+        table {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+th, td, tr {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+
+    </style>
+
+
+</head>
+<body>
+
+<table ><th>GPU Details </th>
+
+    <tr><td>Name:   </td><td>          {{ mygpu.name }}<br/></td></tr>
+    <tr><td>Manufacturer: </td><td>    {{ mygpu.manufacturer }}<br/></td></tr>
+    <tr><td>Date:      </td><td>       {{ mygpu.dateIssued }}<br/></td></td>
+    <tr><td>geometryShader: </td><td>   {{ mygpu.geometryShader }}<br/></td></td>
+    <tr><td>tesselationShader:</td><td> {{ mygpu.tesselationShader }}<br/></td></td>
+    <tr><td>shaderInt16: </td><td>{{ mygpu.shaderInt16 }}<br/></td></tr>
+    <tr><td>sparseBinding: </td><td>{{ mygpu.sparseBinding }}<br/></td></tr>
+    <tr><td>textureCompressionETC2: </td><td>{{ mygpu.textureCompressionETC2 }}<br/></td></tr>
+    <tr><td>vertexPipelineStoresAndAtomics:</td> <td>{{ mygpu.vertexPipelineStoresAndAtomics }}<br/></td></tr>
+    <br/>
+</table>
+<br/>
+
+<form  action="/" method="get">
+
+      <input type="submit" name="button" value="Back"/>
+
+
+<a href="/edit?name={{ mygpu.name }}"> <input type="button" value="Edit" class="button"> </a>
+</form>
+</body>
+</html>
